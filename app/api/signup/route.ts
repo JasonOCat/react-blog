@@ -4,6 +4,6 @@ interface User {
     email: string;
 }
 export async function POST(request: Request) {
-    const user = await request.json();
+    const user: User = await request.json();
     console.log(user)
 }

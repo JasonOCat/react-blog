@@ -12,13 +12,13 @@ export default function SignupPage() {
         const email = String(formData.get("email"));
         const data = {name, email}
         if (name && email) {
-            await fetch("http://localhost:3000/api/signup"), {
+            await fetch("http://localhost:3000/api/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(data),
-            }
+            })
 
         }
     }
