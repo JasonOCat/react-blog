@@ -3,8 +3,10 @@
 import styles from "./Signup.module.css";
 import Link from "next/link";
 import {SyntheticEvent} from "react";
+import {useRouter} from "next/navigation";
 
 export default function SignupPage() {
+    const router = useRouter()
     async function submitData(event: SyntheticEvent<HTMLFormElement>) {
         event.preventDefault()
         const formData = new FormData(event.currentTarget);
@@ -18,7 +20,9 @@ export default function SignupPage() {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(data),
-            })
+            });
+
+            router.push("/");
 
         }
     }

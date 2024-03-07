@@ -1,3 +1,4 @@
+import prisma from "@/lib/prisma";
 
 interface User {
     name: string;
@@ -5,5 +6,11 @@ interface User {
 }
 export async function POST(request: Request) {
     const user: User = await request.json();
-    console.log(user)
+    await prisma.user.create({
+        data: {
+            name: user.name,
+            email: user.email,
+        }
+    })
+    return new Response("success", {status: 201})
 }
